@@ -1,6 +1,6 @@
 {
-  "name": "ng-packagr",
-  "version": "4.7.1",
+  "name": "ng-packagr-dev",
+  "version": "0.1.1",
   "description": "Compile and package a TypeScript library to Angular Package Format",
   "keywords": [
     "angular",
@@ -22,7 +22,7 @@
     "url": "https://github.com/ng-packagr/ng-packagr/issues"
   },
   "bin": {
-    "ng-packagr": "./cli/main.js"
+    "ng-packagr-dev": "./cli/main.js"
   },
   "main": "./public_api.js",
   "typings": "./public_api.d.ts",
@@ -114,7 +114,7 @@
     "typescript": "~3.2.2",
     "zone.js": "^0.8.26"
   },
-  "private": true,
+  "private": false,
   "scripts": {
     "prebuild": "rimraf dist && yarn schema",
     "build": "tsc -p src/tsconfig.packagr.json",
@@ -132,18 +132,6 @@
     "integration:watch:specs": "cross-env TS_NODE_PROJECT=integration/tsconfig.specs.json mocha --timeout 25000 --require ts-node/register \"integration/watch/*.spec.ts\"",
     "test:specs": "cross-env TS_NODE_PROJECT=src/tsconfig.specs.json mocha --require ts-node/register \"src/**/*.spec.ts\"",
     "test": "yarn build && yarn test:specs && yarn integration:samples && yarn integration:specs && yarn integration:watch:specs && yarn integration:consumers",
-    "gh-pages": "gh-pages -d docs/ghpages",
-    "postinstall": "opencollective-postinstall"
-  },
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/ng-packagr",
-    "logo": "https://opencollective.com/opencollective/logo.txt"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e",
-      "pre-commit": "pretty-quick --staged"
-    }
+    "gh-pages": "gh-pages -d docs/ghpages"
   }
 }

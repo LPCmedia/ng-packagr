@@ -39,7 +39,6 @@ export const writePackageTransform: Transform = transformFromPromise(async graph
     ensureUnixPath(path.relative(ngEntryPoint.destinationPath, filePath));
 
   await writePackageJson(ngEntryPoint, ngPackage, {
-    main: relativeUnixFromDestPath(destinationFiles.umd),
     module: relativeUnixFromDestPath(destinationFiles.fesm5),
     es2015: relativeUnixFromDestPath(destinationFiles.fesm2015),
     esm5: relativeUnixFromDestPath(destinationFiles.esm5),

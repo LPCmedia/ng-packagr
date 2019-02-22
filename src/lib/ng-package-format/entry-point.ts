@@ -83,9 +83,7 @@ export class NgEntryPoint {
       esm2015: pathJoinWithDest('esm2015', secondaryDir, `${flatModuleFile}.js`),
       esm5: pathJoinWithDest('esm5', secondaryDir, `${flatModuleFile}.js`),
       fesm2015: pathJoinWithDest('fesm2015', `${flatModuleFile}.js`),
-      fesm5: pathJoinWithDest('fesm5', `${flatModuleFile}.js`),
-      umd: pathJoinWithDest('bundles', `${flatModuleFile}.umd.js`),
-      umdMinified: pathJoinWithDest('bundles', `${flatModuleFile}.umd.min.js`)
+      fesm5: pathJoinWithDest('fesm5', `${flatModuleFile}.js`)
     };
   }
 

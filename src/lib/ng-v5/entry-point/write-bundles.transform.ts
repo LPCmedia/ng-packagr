@@ -1,7 +1,7 @@
 import { map, switchMap } from 'rxjs/operators';
 import { from as fromPromise, pipe } from 'rxjs';
 import { Transform } from '../../brocc/transform';
-import { FlattenOpts, flattenToFesm, flattenToUmd, flattenToUmdMin } from '../../flatten/flatten';
+import { FlattenOpts, flattenToFesm } from '../../flatten/flatten';
 import { NgEntryPoint } from '../../ng-package-format/entry-point';
 import { isEntryPoint, isEntryPointInProgress, EntryPointNode } from '../nodes';
 import * as log from '../../util/log';
@@ -45,7 +45,7 @@ export const writeBundlesTransform: Transform = pipe(
 );
 
 async function writeFlatBundleFiles(destinationFiles: DestinationFiles, opts: FlattenOpts): Promise<void> {
-  const { esm2015, fesm2015, esm5, fesm5, umd, umdMinified } = destinationFiles;
+  const { esm2015, fesm2015, esm5, fesm5 } = destinationFiles;
 
   log.info('Bundling to FESM2015');
   await flattenToFesm({
@@ -61,16 +61,7 @@ async function writeFlatBundleFiles(destinationFiles: DestinationFiles, opts: Fl
     destFile: fesm5
   });
 
-  log.info('Bundling to UMD');
-  await flattenToUmd({
-    ...opts,
-    entryFile: esm5,
-    destFile: umd,
-    dependencyList: opts.dependencyList
-  });
-
-  log.info('Minifying UMD bundle');
-  await flattenToUmdMin(umd, umdMinified);
+  log.info('Fuck UMD in dev mode');
 }
 
 /** Get all list of dependencies for the entire 'BuildGraph' */
